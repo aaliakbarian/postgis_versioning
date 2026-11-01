@@ -1,6 +1,6 @@
 # Product vision
 
-> **Draft:** Awaiting maintainer review for [REQ-01](https://github.com/aaliakbarian/postgis_versioning/issues/2). This document states intent and boundaries; detailed, traceable requirements are in [requirements.md](requirements.md).
+> **Reviewed requirements baseline:** Accepted by the maintainer on 2026-11-01 under [REQ-01 (#2)](https://github.com/aaliakbarian/postgis_versioning/issues/2) as the foundation for Phase 1 design. This document states intent and boundaries; detailed, traceable requirements are in [requirements.md](requirements.md).
 
 ## Purpose
 
@@ -44,7 +44,7 @@ These are intended capabilities, not implemented features or a commitment that a
 
 ## Initial release boundary
 
-No first-release feature set is selected in this draft. The maintainer should select it only after the dependent work defines:
+No first-release feature set is selected by this baseline. The maintainer should select it only after the dependent work defines:
 
 - version, state, workspace, reconciliation, and posting semantics;
 - supported table shapes, feature identity, and the public SQL contract;

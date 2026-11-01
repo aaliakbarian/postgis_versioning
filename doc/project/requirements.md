@@ -1,16 +1,18 @@
 # Product requirements
 
-> **Draft:** Awaiting maintainer review for [REQ-01](https://github.com/aaliakbarian/postgis_versioning/issues/2). Nothing here claims an implemented feature or selects an implementation architecture.
+> **Reviewed requirements baseline:** Accepted by the maintainer on 2026-11-01 under [REQ-01 (#2)](https://github.com/aaliakbarian/postgis_versioning/issues/2) as the foundation for Phase 1 design. Nothing here claims an implemented feature or selects an implementation architecture.
 
 ## 1. How to read this document
 
 Requirement identifiers are stable references for review and acceptance scenarios. Status terms follow the [documentation index](../README.md):
 
 - **Accepted boundary (`BND-*`)** records supplied scope.
-- **Derived requirement (`REQ-*`)** expresses behavior required by the supplied use cases; it becomes accepted only when this draft is approved.
+- **Derived requirement (`REQ-*`)** is an accepted product requirement in this baseline; detailed semantics and initial-release inclusion remain governed by the recorded open work.
 - **Agreed preference (`PREF-*`)** records an expressed direction while leaving its precise contract or feasibility open.
 - **Goal or recommendation (`REC-*`)** retains stable identifiers from the earlier draft; each row states whether it is an expressed goal or still requires approval.
 - **Open decision (`OPEN-*`)** must be resolved by the linked design or research work.
+
+Maintainer acceptance applies to the `BND-*` boundaries, `REQ-*` requirements, and `AC-*` acceptance scenarios. `REC-*` goals or recommendations, `PREF-*` preferences with unresolved mechanisms, and `OPEN-*` decisions retain the individual status recorded below.
 
 The cited PostgreSQL and PostGIS versions are evidence versions, not a selected compatibility baseline.
 
@@ -59,7 +61,7 @@ The cited PostgreSQL and PostGIS versions are evidence versions, not a selected 
 | ID | Requirement |
 | --- | --- |
 | REQ-ING-001 | A full delivery can produce a retained logical state while keeping earlier retained states accessible. |
-| REQ-ING-002 | Frequent full deliveries must have a design path for practical ingestion and storage efficiency, but this draft sets no performance target or checkpoint cadence. |
+| REQ-ING-002 | Frequent full deliveries must have a design path for practical ingestion and storage efficiency, but this baseline sets no performance target or checkpoint cadence. |
 | REQ-ING-003 | An infrequent full replacement can become a retained state without requiring synchronous computation of a full-dataset diff before the replacement is accepted. |
 | REQ-ING-004 | A supplied change batch is applied atomically: it becomes one accepted logical change or leaves no partial accepted state. |
 | REQ-ING-005 | Historical states before and after an accepted batch remain accessible subject to the approved retention contract. |
@@ -157,7 +159,7 @@ Time-based, change-volume-based, and adaptive checkpoints are candidates for sto
 | --- | --- | --- | --- |
 | REC-HIST-001 | Expressed goal; guarantees unresolved | Aim for complete logical change history for retained accepted transitions across collaborative editing, full source deliveries, replacements, and supplied change batches. This goal does not require recording every intermediate workspace edit or SQL statement, and PostgreSQL `COMMIT` does not define the extension's recorded-state boundary. | SEM-01, STO-01, and AUD-01 must define recording boundaries, feature identity, granularity, asynchronous delta completion, readiness reporting, and retention effects. Bulk replacements may be accepted before a derived diff is complete, and unavailable results must not appear as completed empty results. |
 | PREF-VAL-001 | Agreed preference | Allow temporarily incomplete spatial work inside isolated workspaces and enforce configured spatial rules at a defined integration boundary. | VAL-01 must define the precise boundary, supported rules, relevant neighboring features, failure behavior, and feasibility constraints. This preference does not authorize bypassing PostgreSQL privileges or disabling required constraints. |
-| REC-REL-001 | Recommendation requiring approval | Select the initial release only after issues #4–#8 establish a coherent semantics, SQL, storage, validation, and history slice. | This draft does not preselect a feature list or imply that every long-term capability belongs in the first release. |
+| REC-REL-001 | Recommendation requiring approval | Select the initial release only after issues #4–#8 establish a coherent semantics, SQL, storage, validation, and history slice. | This baseline does not preselect a feature list or imply that every long-term capability belongs in the first release. |
 | PREF-DEV-001 | Agreed preference | Keep compilation and database/testing dependencies in containers where practical, with minimal WSL host installation. | Environment work must verify images, versions, architecture, and reproducible commands before documenting them as supported. |
 
 Identifier mapping from the earlier draft:
@@ -178,7 +180,7 @@ Identifier mapping from the earlier draft:
 | OPEN-TECH-001 | C versus Rust/pgrx, SQL/native split, maintained toolchains, and supported PostgreSQL/PostGIS versions. | [TECH-01 #9](https://github.com/aaliakbarian/postgis_versioning/issues/9) |
 | OPEN-REL-001 | The exact first-release feature set and explicit release acceptance criteria. | Maintainer approval after the preceding decisions |
 
-This draft deliberately does not introduce `validated`, `published`, `clean`, or `dirty` as formal version types.
+This baseline deliberately does not introduce `validated`, `published`, `clean`, or `dirty` as formal version types.
 
 ## 7. Traceability summary
 
