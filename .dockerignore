@@ -1,0 +1,15 @@
+# Version-control metadata
+.git
+.git/**
+
+# Local environment secrets at any depth
+**/.env
+**/.env.*
+!**/.env.example
+
+# Root-level generated and runtime artifacts
+build
+coverage
+test-results
+.runtime
+.postgres-data

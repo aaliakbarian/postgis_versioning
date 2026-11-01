@@ -1,0 +1,13 @@
+# Local environment secrets
+.env
+.env.*
+!.env.example
+
+# Root-level generated build and test output
+/build/
+/coverage/
+/test-results/
+
+# Root-level local runtime and database state
+/.runtime/
+/.postgres-data/
